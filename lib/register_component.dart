@@ -20,8 +20,12 @@ class _RegisterComponentState extends State<RegisterComponent> {
       child: Column(
         children: [
           TextFormField(
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: "Username",
+              contentPadding: const EdgeInsets.symmetric(vertical: 15.0),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -31,9 +35,14 @@ class _RegisterComponentState extends State<RegisterComponent> {
             },
             onChanged: (value) => setState(() => _username = value), // Update username on change
           ),
+          const SizedBox(height: 10.0), // Add spacing between fields
           TextFormField(
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: "Email",
+              contentPadding: const EdgeInsets.symmetric(vertical: 15.0),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -45,9 +54,14 @@ class _RegisterComponentState extends State<RegisterComponent> {
             },
             onChanged: (value) => setState(() => _email = value), // Update email on change
           ),
+          const SizedBox(height: 10.0), // Add spacing between fields
           TextFormField(
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: "Password",
+              contentPadding: const EdgeInsets.symmetric(vertical: 15.0),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
             ),
             obscureText: true, // Hide password characters
             validator: (value) {
@@ -58,6 +72,7 @@ class _RegisterComponentState extends State<RegisterComponent> {
             },
             onChanged: (value) => setState(() => _password = value), // Update password on change
           ),
+          const SizedBox(height: 20.0), // Add spacing before button
           ElevatedButton(
             onPressed: () {
               if (_formKey.currentState!.validate()) {
@@ -65,7 +80,13 @@ class _RegisterComponentState extends State<RegisterComponent> {
                 print("Username: $_username, Email: $_email, Password: $_password"); // Placeholder for registration logic
               }
             },
-            child: const Text("Register"),
+            child: const Text("Create Account"),
+            style: ElevatedButton.styleFrom(
+              minimumSize: const Size(double.infinity, 50), // Set button width
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+            ),
           ),
         ],
       ),
